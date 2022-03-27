@@ -20,8 +20,8 @@ jobs:
        run: |
          pwd 
          ls -a 
-         #zip -r my-function.zip .
-         #ls -a
+         zip -r my-function.zip funcion1.py
+         ls -a
          
 
      - name: Configure AWS Credentials
@@ -36,10 +36,8 @@ jobs:
      - name: Deploy lambda function 
        run: | 
          ls -A
-         #aws lambda create-function \
-         #--function-name my-function \
-         #--runtime nodejs10.x \
-         #--zip-file fileb://my-function.zip \
-         #--handler my-function.handler \
-         #--role arn:aws:iam::123456789012:role/service-role/MyTestFunction-role-tges6bf4
-         #aws s3 cp index.zip s3://${{ env.S3_BUCKET }}       
+         aws lambda create-function \
+         --function-name my-function \
+         --runtime python3.9 \
+         --zip-file fileb://my-function.zip \
+         --handler my-function.lambda_handler 
