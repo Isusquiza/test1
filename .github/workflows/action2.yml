@@ -12,6 +12,7 @@ jobs:
     env:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID}}
+      USER: ${{ secrets.USER}}
       AWS_ENVIRONMENT: DEV
 
     steps:
@@ -40,4 +41,5 @@ jobs:
          --function-name my-function \
          --runtime python3.9 \
          --zip-file fileb://my-function.zip \
-         --handler my-function.lambda_handler 
+         --handler my-function.lambda_handler \
+         --role ${{ env.USER }}
