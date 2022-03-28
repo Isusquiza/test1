@@ -38,13 +38,11 @@ jobs:
 
      
      - name: Test pyhton  
-       uses: aws-actions/setup-sam@v1
        run: |
          python --version
 
 
      - name: Test locally lambda 
-       uses: aws-actions/setup-sam@v1
        run: |
          sam --version
 
