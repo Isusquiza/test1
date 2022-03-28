@@ -17,6 +17,8 @@ jobs:
 
     steps:
      - uses: actions/checkout@v2
+     - uses: actions/setup-python@v2
+     - uses: aws-actions/setup-sam@v1
      - name: Build & Zip
        run: |
          pwd 
@@ -33,6 +35,18 @@ jobs:
          #role-duration-seconds: 2400
          aws-region: us-east-1
          role-skip-session-tagging: true
+
+     
+     - name: Test pyhton  
+       uses: aws-actions/setup-sam@v1
+       run: |
+         python --version
+
+
+     - name: Test locally lambda 
+       uses: aws-actions/setup-sam@v1
+       run: |
+         sam --version
 
      - name: Deploy lambda function 
        run: | 
